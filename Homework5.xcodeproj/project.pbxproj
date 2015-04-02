@@ -15,6 +15,9 @@
 		E10044C81ACD8209005DEE98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E10044C71ACD8209005DEE98 /* Images.xcassets */; };
 		E10044CB1ACD8209005DEE98 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10044C91ACD8209005DEE98 /* LaunchScreen.xib */; };
 		E10044D71ACD8209005DEE98 /* Homework5Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E10044D61ACD8209005DEE98 /* Homework5Tests.m */; };
+		E10044E31ACD9220005DEE98 /* Facultative.m in Sources */ = {isa = PBXBuildFile; fileRef = E10044E21ACD9220005DEE98 /* Facultative.m */; };
+		E10044E61ACD9221005DEE98 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = E10044E51ACD9221005DEE98 /* Student.m */; };
+		E10044E91ACD9221005DEE98 /* University.m in Sources */ = {isa = PBXBuildFile; fileRef = E10044E81ACD9221005DEE98 /* University.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,12 @@
 		E10044D01ACD8209005DEE98 /* Homework5Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Homework5Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10044D51ACD8209005DEE98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E10044D61ACD8209005DEE98 /* Homework5Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Homework5Tests.m; sourceTree = "<group>"; };
+		E10044E11ACD9220005DEE98 /* Facultative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facultative.h; sourceTree = "<group>"; };
+		E10044E21ACD9220005DEE98 /* Facultative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facultative.m; sourceTree = "<group>"; };
+		E10044E41ACD9221005DEE98 /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		E10044E51ACD9221005DEE98 /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		E10044E71ACD9221005DEE98 /* University.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = University.h; sourceTree = "<group>"; };
+		E10044E81ACD9221005DEE98 /* University.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = University.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +92,7 @@
 		E10044B61ACD8208005DEE98 /* Homework5 */ = {
 			isa = PBXGroup;
 			children = (
+				E10044E01ACD9176005DEE98 /* Models */,
 				E10044BB1ACD8208005DEE98 /* AppDelegate.h */,
 				E10044BC1ACD8208005DEE98 /* AppDelegate.m */,
 				E10044C11ACD8209005DEE98 /* ViewController.h */,
@@ -120,6 +130,19 @@
 				E10044D51ACD8209005DEE98 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E10044E01ACD9176005DEE98 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E10044E71ACD9221005DEE98 /* University.h */,
+				E10044E81ACD9221005DEE98 /* University.m */,
+				E10044E41ACD9221005DEE98 /* Student.h */,
+				E10044E51ACD9221005DEE98 /* Student.m */,
+				E10044E11ACD9220005DEE98 /* Facultative.h */,
+				E10044E21ACD9220005DEE98 /* Facultative.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,9 +246,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10044C01ACD8209005DEE98 /* Homework5.xcdatamodeld in Sources */,
+				E10044E31ACD9220005DEE98 /* Facultative.m in Sources */,
 				E10044BD1ACD8208005DEE98 /* AppDelegate.m in Sources */,
 				E10044C31ACD8209005DEE98 /* ViewController.m in Sources */,
 				E10044BA1ACD8208005DEE98 /* main.m in Sources */,
+				E10044E61ACD9221005DEE98 /* Student.m in Sources */,
+				E10044E91ACD9221005DEE98 /* University.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
