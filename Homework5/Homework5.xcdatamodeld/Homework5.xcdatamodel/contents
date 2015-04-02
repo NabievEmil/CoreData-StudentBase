@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Facultative" syncable="YES">
+        <attribute name="facultativeName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="facultative" inverseEntity="Student" syncable="YES"/>
+        <relationship name="university" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="University" inverseName="facultatives" inverseEntity="University" syncable="YES"/>
+    </entity>
+    <entity name="Student" syncable="YES">
+        <attribute name="course" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="4" defaultValueString="0" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="facultative" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Facultative" inverseName="students" inverseEntity="Facultative" syncable="YES"/>
+    </entity>
+    <entity name="University" syncable="YES">
+        <attribute name="universityName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="facultatives" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Facultative" inverseName="university" inverseEntity="Facultative" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="University" positionX="-19368" positionY="-6337" width="128" height="73"/>
+        <element name="Facultative" positionX="-19170" positionY="-6282" width="128" height="88"/>
+        <element name="Student" positionX="-18990" positionY="-6208" width="128" height="88"/>
+    </elements>
 </model>
