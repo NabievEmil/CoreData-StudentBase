@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "University.h"
+#import "Student.h"
+#import "Facultative.h"
 
 @interface StudentBaseViewController : UITableViewController
+
+@property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

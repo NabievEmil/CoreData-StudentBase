@@ -10,6 +10,7 @@
 #import "University.h"
 #import "Student.h"
 #import "Facultative.h"
+#import "StudentBaseViewController.h"
 
 @interface AppDelegate ()
 
@@ -60,13 +61,16 @@
 //        
 //    }
     
-//    [self.managedObjectContext save:nil];
+    [self.managedObjectContext save:nil];
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"University"];
+//    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"University"];
+//    
+//    NSArray *universities = [self.managedObjectContext executeFetchRequest:fetchRequest
+//                                                                   error:nil];
+//    NSLog(@"%@",universities);
     
-    NSArray *universities = [self.managedObjectContext executeFetchRequest:fetchRequest
-                                                                   error:nil];
-    NSLog(@"%@",universities);
+    StudentBaseViewController *controller = (StudentBaseViewController *)self.window.rootViewController;
+    controller.managedObjectContext = self.managedObjectContext;
     
 
     return YES;
