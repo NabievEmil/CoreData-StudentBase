@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Student;
 
 @interface Facultative : NSManagedObject
 
@@ -19,8 +20,8 @@
 
 @interface Facultative (CoreDataGeneratedAccessors)
 
-- (void)addStudentsObject:(NSManagedObject *)value;
-- (void)removeStudentsObject:(NSManagedObject *)value;
+- (void)addStudentsObject:(Student *)value;
+- (void)removeStudentsObject:(Student *)value;
 - (void)addStudents:(NSSet *)values;
 - (void)removeStudents:(NSSet *)values;
 
