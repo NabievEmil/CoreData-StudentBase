@@ -69,7 +69,8 @@
 //                                                                   error:nil];
 //    NSLog(@"%@",universities);
     
-    StudentBaseViewController *controller = (StudentBaseViewController *)self.window.rootViewController;
+    UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+    StudentBaseViewController *controller = navController.viewControllers[0];
     controller.managedObjectContext = self.managedObjectContext;
     
 

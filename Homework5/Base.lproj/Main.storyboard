@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eca-Y8-ism">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tjp-ej-nnG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="2oH-dO-IwH">
+            <objects>
+                <navigationController id="tjp-ej-nnG" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jvp-RM-WIz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eca-Y8-ism" kind="relationship" relationship="rootViewController" id="xQW-8S-ipQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9y-Hi-TnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-673" y="202"/>
+        </scene>
         <!--Student Base View Controller-->
         <scene sceneID="Csb-mu-Xym">
             <objects>
@@ -36,12 +52,13 @@
                             <outlet property="delegate" destination="eca-Y8-ism" id="kXj-kO-5sQ"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="wd7-Ln-f2G"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gi-k6-aXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="44" y="202"/>
         </scene>
-        <!--Second Screen View Controller-->
+        <!--Title-->
         <scene sceneID="6OA-TN-MH6">
             <objects>
                 <tableViewController id="izv-Tc-bOy" customClass="SecondScreenViewController" sceneMemberID="viewController">
@@ -70,7 +87,7 @@
                             <outlet property="delegate" destination="izv-Tc-bOy" id="pf6-Sa-rtm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="8Ls-PV-Eht"/>
+                    <navigationItem key="navigationItem" title="Title" id="CSO-EL-PPg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtZ-Y8-1Cc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
