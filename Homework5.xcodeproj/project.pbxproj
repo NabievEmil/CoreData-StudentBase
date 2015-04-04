@@ -19,6 +19,7 @@
 		E10044E61ACD9221005DEE98 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = E10044E51ACD9221005DEE98 /* Student.m */; };
 		E10044E91ACD9221005DEE98 /* University.m in Sources */ = {isa = PBXBuildFile; fileRef = E10044E81ACD9221005DEE98 /* University.m */; };
 		E10044EC1ACF229A005DEE98 /* StudentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10044EB1ACF229A005DEE98 /* StudentBaseViewController.m */; };
+		E10044EF1ACF2957005DEE98 /* SecondScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10044EE1ACF2957005DEE98 /* SecondScreenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		E10044E81ACD9221005DEE98 /* University.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = University.m; sourceTree = "<group>"; };
 		E10044EA1ACF229A005DEE98 /* StudentBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentBaseViewController.h; sourceTree = "<group>"; };
 		E10044EB1ACF229A005DEE98 /* StudentBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentBaseViewController.m; sourceTree = "<group>"; };
+		E10044ED1ACF2957005DEE98 /* SecondScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondScreenViewController.h; sourceTree = "<group>"; };
+		E10044EE1ACF2957005DEE98 /* SecondScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondScreenViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				E10044B71ACD8208005DEE98 /* Supporting Files */,
 				E10044EA1ACF229A005DEE98 /* StudentBaseViewController.h */,
 				E10044EB1ACF229A005DEE98 /* StudentBaseViewController.m */,
+				E10044ED1ACF2957005DEE98 /* SecondScreenViewController.h */,
+				E10044EE1ACF2957005DEE98 /* SecondScreenViewController.m */,
 			);
 			path = Homework5;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				E10044E61ACD9221005DEE98 /* Student.m in Sources */,
 				E10044E91ACD9221005DEE98 /* University.m in Sources */,
 				E10044EC1ACF229A005DEE98 /* StudentBaseViewController.m in Sources */,
+				E10044EF1ACF2957005DEE98 /* SecondScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,31 +1,29 @@
 //
-//  StudentBaseViewController.m
+//  SecondScreenViewController.m
 //  Homework5
 //
 //  Created by Наталия on 03.04.15.
 //  Copyright (c) 2015 Emil. All rights reserved.
 //
 
-#import "StudentBaseViewController.h"
 #import "SecondScreenViewController.h"
+#import "Facultative.h"
 
+@interface SecondScreenViewController ()
 
-@interface StudentBaseViewController ()
-
-@property (strong,nonatomic) NSArray *universities;
 
 @end
 
-@implementation StudentBaseViewController
+@implementation SecondScreenViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"University"];
     
-    self.universities = [self.managedObjectContext executeFetchRequest:fetchRequest
-                                                                     error:nil];
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
     
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,24 +33,23 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.universities.count;
+
+    return self.facultatives.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
-                                                            forIndexPath:indexPath];
-    University *university = self.universities[indexPath.row];
-    cell.textLabel.text =university.universityName;
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    Facultative *facultative = self.facultatives[indexPath.row];
+    cell.textLabel.text = facultative.facultativeName;
     return cell;
 }
 
@@ -91,15 +88,14 @@
 }
 */
 
+/*
+#pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    SecondScreenViewController *controller1 = segue.destinationViewController;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    University *university = self.universities[indexPath.row];
-    NSArray *facultatives = [university.facultatives allObjects];
-    controller1.facultatives = facultatives;
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
+*/
 
 @end
