@@ -1,21 +1,19 @@
 //
-//  SecondScreenViewController.m
+//  ThirdScreenViewController.m
 //  Homework5
 //
-//  Created by Наталия on 03.04.15.
+//  Created by Наталия on 04.04.15.
 //  Copyright (c) 2015 Emil. All rights reserved.
 //
 
-#import "SecondScreenViewController.h"
-#import "Facultative.h"
 #import "ThirdScreenViewController.h"
+#import "Student.h"
 
-@interface SecondScreenViewController ()
-
+@interface ThirdScreenViewController ()
 
 @end
 
-@implementation SecondScreenViewController
+@implementation ThirdScreenViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,26 +32,24 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
 
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.facultatives.count;
+    return self.students.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    Facultative *facultative = self.facultatives[indexPath.row];
-    cell.textLabel.text = facultative.facultativeName;
+    Student *student = self.students[indexPath.row];
+    cell.textLabel.text = student.firstName;
     return cell;
 }
-
 
 /*
 // Override to support conditional editing of the table view.
@@ -89,16 +85,14 @@
 }
 */
 
+/*
+#pragma mark - Navigation
 
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    ThirdScreenViewController *controller2 = segue.destinationViewController;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    Facultative *facultative = self.facultatives[indexPath.row];
-    NSArray *students = [facultative.students allObjects];
-    controller2.students = students;
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
+*/
 
 @end
