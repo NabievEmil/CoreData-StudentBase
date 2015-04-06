@@ -108,14 +108,14 @@
 
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    ThirdScreenViewController *controller2 = segue.destinationViewController;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    Facultative *facultative = self.facultatives[indexPath.row];
-    NSArray *students = [facultative.students allObjects];
-    controller2.students = students;
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    ThirdScreenViewController *controller2 = segue.destinationViewController;
+//    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+//    Facultative *facultative = self.facultatives[indexPath.row];
+//    NSArray *students = [facultative.students allObjects];
+//    controller2.students = students;
+//}
 
 
 @end
