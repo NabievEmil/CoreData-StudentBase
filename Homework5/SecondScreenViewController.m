@@ -9,6 +9,7 @@
 #import "SecondScreenViewController.h"
 #import "Facultative.h"
 #import "ThirdScreenViewController.h"
+#import "Student.h"
 
 @interface SecondScreenViewController ()
 
@@ -21,16 +22,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [super viewDidLoad];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Facultative"];
-    fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc]initWithKey:@"facultativeName" ascending:YES]];
-    NSPredicate *predicateRequest = [NSPredicate predicateWithFormat:@"university == %@",self.university];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
+    fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc]initWithKey:@"facultative.facultativeName"
+                                                                ascending:YES],
+                                     [[NSSortDescriptor alloc]initWithKey:@"firstName"
+                                                                ascending:YES]];
+    NSPredicate *predicateRequest = [NSPredicate predicateWithFormat:@"facultative.university == %@",self.university];
     [fetchRequest setPredicate:predicateRequest];
-    self.facultatives = [self.managedObjectContext executeFetchRequest:fetchRequest
-                                                                 error:nil];
+    //    self.facultatives = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext: self.managedObjectContext
-                                                                          sectionNameKeyPath:nil
+                                                                          sectionNameKeyPath:@"facultative.facultativeName"
                                                                                    cacheName:nil];
     [self.fetchedResultsController performFetch:nil];
 
@@ -58,9 +60,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    Facultative *facultative = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = facultative.facultativeName;
+    Student *student = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = student.firstName;
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo name];
 }
 
 
