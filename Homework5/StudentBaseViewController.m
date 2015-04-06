@@ -13,6 +13,7 @@
 @interface StudentBaseViewController ()
 
 @property (strong,nonatomic) NSArray *universities;
+@property (strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -22,9 +23,15 @@
 {
     [super viewDidLoad];
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"University"];
+    fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc]initWithKey:@"universityName" ascending:YES]];
     
     self.universities = [self.managedObjectContext executeFetchRequest:fetchRequest
                                                                      error:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                        managedObjectContext: self.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
+    [self.fetchedResultsController performFetch:nil];
     
 }
 
@@ -38,19 +45,20 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-    return 1;
+    return [self.fetchedResultsController sections].count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.universities.count;
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
                                                             forIndexPath:indexPath];
-    University *university = self.universities[indexPath.row];
+    University *university = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text =university.universityName;
     
     return cell;
@@ -96,9 +104,9 @@
 {
     SecondScreenViewController *controller1 = segue.destinationViewController;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    University *university = self.universities[indexPath.row];
-    NSArray *facultatives = [university.facultatives allObjects];
-    controller1.facultatives = facultatives;
+    University *university = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//    NSArray *facultatives = [university.facultatives allObjects];
+    controller1.managedObjectContext = self.managedObjectContext;
 }
 
 

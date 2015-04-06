@@ -11,5 +11,6 @@
 @interface ThirdScreenViewController : UITableViewController
 
 @property (strong,nonatomic) NSArray *students;
+@property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

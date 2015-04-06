@@ -11,5 +11,6 @@
 @interface SecondScreenViewController : UITableViewController
 
 @property (strong,nonatomic) NSArray *facultatives;
+@property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

@@ -12,6 +12,7 @@
 
 @interface SecondScreenViewController ()
 
+@property (strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -20,11 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [super viewDidLoad];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Facultative"];
+    fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc]initWithKey:@"facultativeName" ascending:YES]];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.facultatives = [self.managedObjectContext executeFetchRequest:fetchRequest
+                                                                 error:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                        managedObjectContext: self.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
+    [self.fetchedResultsController performFetch:nil];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,20 +44,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
+    return [self.fetchedResultsController sections].count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    return self.facultatives.count;
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    Facultative *facultative = self.facultatives[indexPath.row];
+    Facultative *facultative = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = facultative.facultativeName;
     return cell;
 }

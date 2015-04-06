@@ -60,8 +60,8 @@
 //        }
 //        
 //    }
-    
-    [self.managedObjectContext save:nil];
+//    
+//    [self.managedObjectContext save:nil];
     
 //    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"University"];
 //    
