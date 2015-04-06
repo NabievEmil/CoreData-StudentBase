@@ -24,7 +24,8 @@
     [super viewDidLoad];
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Facultative"];
     fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc]initWithKey:@"facultativeName" ascending:YES]];
-    
+    NSPredicate *predicateRequest = [NSPredicate predicateWithFormat:@"university == %@",self.university];
+    [fetchRequest setPredicate:predicateRequest];
     self.facultatives = [self.managedObjectContext executeFetchRequest:fetchRequest
                                                                  error:nil];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest

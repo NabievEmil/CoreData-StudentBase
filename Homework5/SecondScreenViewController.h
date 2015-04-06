@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "University.h"
 
 @interface SecondScreenViewController : UITableViewController
 
 @property (strong,nonatomic) NSArray *facultatives;
 @property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong,nonatomic) University *university;
 
 @end

@@ -106,6 +106,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     University *university = [self.fetchedResultsController objectAtIndexPath:indexPath];
 //    NSArray *facultatives = [university.facultatives allObjects];
+    controller1.university = university;
     controller1.managedObjectContext = self.managedObjectContext;
 }
 
