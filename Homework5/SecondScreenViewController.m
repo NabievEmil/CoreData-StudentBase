@@ -10,6 +10,7 @@
 #import "Facultative.h"
 #import "ThirdScreenViewController.h"
 #import "Student.h"
+#import "AddStudentViewController.h"
 
 @interface SecondScreenViewController ()
 
@@ -71,6 +72,18 @@
     return [sectionInfo name];
 }
 
+
+#pragma mark - Handlers
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[AddStudentViewController class]])
+    {
+        AddStudentViewController *controller = segue.destinationViewController;
+        
+        controller.managedObjectContext = self.managedObjectContext;
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.

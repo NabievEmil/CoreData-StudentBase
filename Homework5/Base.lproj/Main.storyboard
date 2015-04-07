@@ -87,11 +87,36 @@
                             <outlet property="delegate" destination="izv-Tc-bOy" id="pf6-Sa-rtm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="CSO-EL-PPg"/>
+                    <navigationItem key="navigationItem" title="Title" id="CSO-EL-PPg">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Nxw-q7-ibX">
+                            <connections>
+                                <segue destination="46W-yJ-nyW" kind="push" id="ZOY-td-wXr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtZ-Y8-1Cc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="752" y="202"/>
+        </scene>
+        <!--Add Student View Controller-->
+        <scene sceneID="ECC-ua-AVP">
+            <objects>
+                <viewController id="46W-yJ-nyW" customClass="AddStudentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gzQ-pU-R67"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xck-nk-ZrR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yJf-sp-2iV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FI7-b0-A3D"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O38-Vb-HaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1416" y="202"/>
         </scene>
     </scenes>
 </document>
