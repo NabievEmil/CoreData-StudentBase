@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tjp-ej-nnG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -58,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="44" y="202"/>
         </scene>
-        <!--Title-->
+        <!--Student base-->
         <scene sceneID="6OA-TN-MH6">
             <objects>
-                <tableViewController id="izv-Tc-bOy" customClass="SecondScreenViewController" sceneMemberID="viewController">
+                <tableViewController title="Student base" id="izv-Tc-bOy" customClass="SecondScreenViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bCs-Cq-tyq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +88,12 @@
                             <outlet property="delegate" destination="izv-Tc-bOy" id="pf6-Sa-rtm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="CSO-EL-PPg">
+                    <navigationItem key="navigationItem" title="Student base" id="CSO-EL-PPg">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="edit" id="R6c-qR-HZ5">
+                            <connections>
+                                <action selector="didPressEditButton:" destination="izv-Tc-bOy" id="A8X-n7-Fcf"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Nxw-q7-ibX">
                             <connections>
                                 <segue destination="46W-yJ-nyW" kind="push" id="ZOY-td-wXr"/>
@@ -99,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="752" y="202"/>
         </scene>
-        <!--Add Student View Controller-->
+        <!--Add student-->
         <scene sceneID="ECC-ua-AVP">
             <objects>
-                <viewController id="46W-yJ-nyW" customClass="AddStudentViewController" sceneMemberID="viewController">
+                <viewController title="Add student" id="46W-yJ-nyW" customClass="AddStudentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gzQ-pU-R67"/>
                         <viewControllerLayoutGuide type="bottom" id="Xck-nk-ZrR"/>
@@ -110,9 +116,48 @@
                     <view key="view" contentMode="scaleToFill" id="yJf-sp-2iV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facultative name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v25-64-AWD">
+                                <rect key="frame" x="26" y="72" width="548" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uog-vJ-hOC">
+                                <rect key="frame" x="26" y="110" width="548" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgD-ha-sum">
+                                <rect key="frame" x="26" y="148" width="548" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v25-64-AWD" firstAttribute="leading" secondItem="yJf-sp-2iV" secondAttribute="leadingMargin" constant="10" id="Ffz-IX-2iY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wgD-ha-sum" secondAttribute="trailing" constant="10" id="Wui-Ib-m3h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Uog-vJ-hOC" secondAttribute="trailing" constant="10" id="XWF-XO-dbi"/>
+                            <constraint firstItem="wgD-ha-sum" firstAttribute="leading" secondItem="yJf-sp-2iV" secondAttribute="leadingMargin" constant="10" id="Xcr-zM-RGZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="v25-64-AWD" secondAttribute="trailing" constant="10" id="ddO-Kr-ae1"/>
+                            <constraint firstItem="Uog-vJ-hOC" firstAttribute="leading" secondItem="yJf-sp-2iV" secondAttribute="leadingMargin" constant="10" id="eRX-Hi-Ytq"/>
+                            <constraint firstItem="Uog-vJ-hOC" firstAttribute="top" secondItem="v25-64-AWD" secondAttribute="bottom" constant="8" id="gJ6-vj-ns7"/>
+                            <constraint firstItem="v25-64-AWD" firstAttribute="top" secondItem="gzQ-pU-R67" secondAttribute="bottom" constant="8" id="nYA-B8-gqG"/>
+                            <constraint firstItem="wgD-ha-sum" firstAttribute="top" secondItem="Uog-vJ-hOC" secondAttribute="bottom" constant="8" id="ugh-e1-dc9"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="FI7-b0-A3D"/>
+                    <navigationItem key="navigationItem" title="Add student" id="FI7-b0-A3D">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="Q4u-Ul-l1h">
+                            <connections>
+                                <action selector="didPressOnSave:" destination="46W-yJ-nyW" id="xHT-zq-xop"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="facultativeNameTextField" destination="v25-64-AWD" id="mP4-mQ-Pw1"/>
+                        <outlet property="studentCourseTextField" destination="wgD-ha-sum" id="5z7-FW-WTD"/>
+                        <outlet property="studentNameTextField" destination="Uog-vJ-hOC" id="JuY-NO-HBh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O38-Vb-HaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

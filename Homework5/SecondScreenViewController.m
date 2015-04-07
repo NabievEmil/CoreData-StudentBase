@@ -72,8 +72,35 @@
     return [sectionInfo name];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (editingStyle) {
+        case UITableViewCellEditingStyleDelete:
+        {
+            Student *student = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            [self.managedObjectContext deleteObject:student];
+            [self.managedObjectContext save:nil];
+        }
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 #pragma mark - Handlers
+- (IBAction)didPressEditButton:(id)sender
+{
+    [self.tableView setEditing:!self.tableView.editing
+                      animated:YES];
+}
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -85,42 +112,65 @@
     }
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - Fetched results controller
+
+-(void)controllerWillChangeContent:(NSFetchedResultsController *) controller
+{
+    [self.tableView beginUpdates];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+-(void)controllerDidChangeContent:(NSFetchedResultsController *) controller
+{
+    [self.tableView endUpdates];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+-(void)controller:(NSFetchedResultsController *) controller
+  didChangeObject:(id)anObject
+      atIndexPath:(NSIndexPath *)indexPath
+    forChangeType:(NSFetchedResultsChangeType)type
+     newIndexPath:(NSIndexPath *)newIndexPath
+{
+    switch (type)
+    {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeMove:
+            [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+            break;
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        default:
+            break;
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+-(void)controller:(NSFetchedResultsController *)controller
+ didChangeSection:(id<NSFetchedResultsSectionInfo>)
+sectionInfo atIndex:(NSUInteger)sectionIndex
+    forChangeType:(NSFetchedResultsChangeType)type
+{
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        default:
+            break;
+    }
 }
-*/
-
-
-
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 //{
 //    ThirdScreenViewController *controller2 = segue.destinationViewController;

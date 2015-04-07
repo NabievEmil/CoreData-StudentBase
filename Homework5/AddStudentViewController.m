@@ -7,8 +7,14 @@
 //
 
 #import "AddStudentViewController.h"
+#import "Facultative.h"
+#import "Student.h"
+
 
 @interface AddStudentViewController ()
+@property (strong, nonatomic) IBOutlet UITextField *facultativeNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *studentNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *studentCourseTextField;
 
 @end
 
@@ -22,6 +28,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)didPressOnSave:(id)sender
+{
+    Facultative *facultative = [NSEntityDescription insertNewObjectForEntityForName:@"Facultative"
+                                                             inManagedObjectContext:self.managedObjectContext];
+    facultative.facultativeName = self.facultativeNameTextField.text;
+    
+    Student *student = [NSEntityDescription insertNewObjectForEntityForName:@"Student"
+                                                     inManagedObjectContext:self.managedObjectContext];
+    student.firstName = self.studentNameTextField.text;
+    student.facultative = facultative;
+    
+    [self.managedObjectContext save:nil];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    
 }
 
 /*
