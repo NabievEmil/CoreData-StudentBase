@@ -12,7 +12,7 @@
 #import "Student.h"
 #import "AddStudentViewController.h"
 
-@interface SecondScreenViewController ()
+@interface SecondScreenViewController () <NSFetchedResultsControllerDelegate>
 
 @property (strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 
@@ -33,8 +33,10 @@
     //    self.facultatives = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext: self.managedObjectContext
-                                                                          sectionNameKeyPath:@"facultative.facultativeName"
+                                                                    sectionNameKeyPath:@"facultative.facultativeName"
                                                                                    cacheName:nil];
+    self.fetchedResultsController.delegate = self;
+    
     [self.fetchedResultsController performFetch:nil];
 
 }
